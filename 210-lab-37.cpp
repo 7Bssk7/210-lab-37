@@ -6,8 +6,10 @@
 #include <list>
 using namespace std;
 
+// Constant for modulus used in hash function
 const int N = 141;
 
+// Function prototype of the function that generates a hash index for a given string
 int gen_hash_index(const string&);
 
 int main() {
@@ -18,7 +20,9 @@ int main() {
     cout << b << endl;
     cout << (char) b << endl;
 
+    // *** TEST ***
     // int grand_sum  = 0;
+
     string input;
     fstream in_File("lab-37-data-3.txt");
     map<int, list<string>> hash_table;
@@ -51,6 +55,8 @@ int main() {
 
     }
 
+
+    // *** TEST ***
     /*
     cout << "Grand total: " << grand_sum << endl;
 
