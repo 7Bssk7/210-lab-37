@@ -251,6 +251,9 @@ void add_key(map<int, list<string>>& h_t, const string& code){
     }
 }
 
+// remove_key(): removes a code from the hash table if it exists in the correct bucket
+// argument: map<int, list<string>>& h_t (hash table), string code (the code to remove)
+// return: none, outputs confirmation or not found message
 void remove_key(map<int, list<string>>& h_t, const string& code){
     int index = gen_hash_index(code);
     auto it = h_t.find(index);
@@ -276,6 +279,9 @@ void remove_key(map<int, list<string>>& h_t, const string& code){
 
 }
 
+// modify_key(): replaces an existing code with a new one by removing the old code and inserting the new code
+// argument: map<int, list<string>>& h_t (hash table), string code (the code to modify)
+// return: none, inserts for new code, outputs confirmation or not found message
 void modify_key(map<int, list<string>>& h_t, const string& code){
     int index = gen_hash_index(code);
     auto it = h_t.find(index);
