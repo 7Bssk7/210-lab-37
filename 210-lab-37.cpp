@@ -40,10 +40,11 @@ int main() {
     int count = 0;
     for(map<int, list<string>>::iterator it = hash_table.begin(); (it != hash_table.end()) && ( count <= 100) ; ++it, ++count){
 
-        cout << "Index #" << it->first << " :" << endl;
+        cout << "\n -> Index #" << it->first << " :" << endl;
 
-        for(const auto code : it->second){
-            cout << code << " ";
+        int shown = 0;
+        for( auto code = it->second.begin(); (code != it->second.end()) && (shown <= 5); ++code, ++shown){
+            cout << *code << " ";
         }
 
         cout << endl;
