@@ -207,7 +207,10 @@ void add_key(map<int, list<string>>& h_t, const string& code){
             h_t[index].push_back(code);
             cout << code << " was added to the bucket under index " << index << endl;
         }
-
+    }
+    else{
+        h_t[index].push_back(code);
+        cout << code << " was added to the bucket under index " << index << endl;
     }
 }
 
