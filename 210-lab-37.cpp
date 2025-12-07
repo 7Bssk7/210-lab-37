@@ -9,11 +9,12 @@
 using namespace std;
 
 // Constant for modulus used in hash function
-const int N = 141;
+const int N = 141, CODE_SIZE = 12;
 
 // Function prototype of the function that generates a hash index for a given string
 int gen_hash_index(const string&);
 void search_key(const map<int, list<string>>& , const string&);
+void add_key(map<int, list<string>>& , const string&);
 void menu();
 
 int main() {
@@ -87,9 +88,25 @@ int main() {
                 cout << "\n *** SEARCH FOR A KEY *** " << endl;
                 cout << "\nEnter your key: ";
                 cin >> e_key;
+                while((e_key.size() < CODE_SIZE) || (e_key.size() > CODE_SIZE)){
+                    cout << "Ivalid key size, please enter your key again!" << endl;
+                    cout << "Enter your key: ";
+                    cin >> e_key;
+                }
                 search_key(hash_table, e_key);
+
             }
             if(choice == 3){
+                string a_key;
+                cout << "\n *** ADD A KEY *** " << endl;
+                cout << "\nEnter your key: ";
+                cin >> a_key;
+                while((a_key.size() < CODE_SIZE) || (a_key.size() > CODE_SIZE)){
+                    cout << "Ivalid key size, please enter your key again!" << endl;
+                    cout << "Enter your key: ";
+                    cin >> a_key;
+                }
+                add_key(hash_table, a_key);
                 
             }
             if(choice == 4){
@@ -169,6 +186,29 @@ void search_key(const map<int, list<string>>& h_t, const string& code){
         cout <<  "Index " << index << " not found in hash table." << endl;
     }
 
+}
+
+void add_key(map<int, list<string>>& h_t, const string& code){
+    int index = gen_hash_index(code);
+    auto it = h_t.find(index);
+
+    if(it != h_t.end()){
+        bool found = false;
+        for( auto key = it->second.begin(); (key != it->second.end()) && (found == false); ++key){
+            if(*key == code){
+                found = true;
+            }
+        }
+
+        if(found){
+            cout << "+ Same code: " << code << " was found at index " << index << endl;
+        }
+        else{
+            h_t[index].push_back(code);
+            cout << code << " was added to the bucket under index " << index << endl;
+        }
+
+    }
 }
 
 // *** TEST ***
