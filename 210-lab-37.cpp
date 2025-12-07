@@ -13,15 +13,18 @@ const int N = 141;
 
 // Function prototype of the function that generates a hash index for a given string
 int gen_hash_index(const string&);
-void meun();
+void menu();
 
 int main() {
+    // *** TEST ***
+    /*
     char a = 'A';
     cout << a << endl;
     cout << (int) a << endl;
     int b = 66;
     cout << b << endl;
     cout << (char) b << endl;
+    */
 
     // *** TEST ***
     // int grand_sum  = 0;
@@ -51,26 +54,54 @@ int main() {
 
     int choice;
 
+    cout << "\n *** WELCOME *** " << endl;
+
     menu();
     cin >> choice;
-    
-    
-
-
-    // Outputs the first 100 entries of the hash table
-    int count = 0;
-    for(map<int, list<string>>::iterator it = hash_table.begin(); (it != hash_table.end()) && ( count <= 100) ; ++it, ++count){
-
-        cout << "\n -> Index #" << it->first << " :" << endl;
-
-        // Show up to 5 codes from each bucket for readability
-        int shown = 0;
-        for( auto code = it->second.begin(); (code != it->second.end()) && (shown <= 5); ++code, ++shown){
-            cout << *code << " ";
+    while(choice != 6){
+        if((choice < 1) || (choice > 6)){
+            cout << "\nInvalid input, please enter your choice again!" << endl;
+            menu();
+            cin >> choice;
         }
+        else{
+            if(choice == 1){
+                // Outputs the first 100 entries of the hash table
+                int count = 0;
+                for(map<int, list<string>>::iterator it = hash_table.begin(); (it != hash_table.end()) && ( count <= 100) ; ++it, ++count){
 
-        cout << endl;
+                    cout << "\n -> Index #" << it->first << " :" << endl;
+
+                    // Show up to 5 codes from each bucket for readability
+                    int shown = 0;
+                    for( auto code = it->second.begin(); (code != it->second.end()) && (shown <= 5); ++code, ++shown){
+                        cout << *code << " ";
+                    }
+
+                    cout << endl;
+                }
+            }
+            if(choice == 2){
+
+            }
+            if(choice == 3){
+                
+            }
+            if(choice == 4){
+                
+            }
+            if(choice == 5){
+                
+            }
+        }
+        menu();
+        cin >> choice;
     }
+
+    cout << "Bye" << endl;
+
+
+
 
     // *** TEST ***
     /*
@@ -100,7 +131,7 @@ int gen_hash_index(const string & s){
 }
 
 void menu(){
-    cout << "1. Print 100 entries" << endl;
+    cout << "\n1. Print 100 entries" << endl;
     cout << "2. Search for a key" << endl;
     cout << "3. Add a key" << endl;
     cout << "4. Remove a key" << endl;
