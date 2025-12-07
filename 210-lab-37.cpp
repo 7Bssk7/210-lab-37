@@ -72,13 +72,13 @@ int main() {
             if(choice == 1){
                 // Outputs the first 100 entries of the hash table
                 int count = 0;
-                for(map<int, list<string>>::iterator it = hash_table.begin(); (it != hash_table.end()) && ( count <= 100) ; ++it, ++count){
+                for(map<int, list<string>>::iterator it = hash_table.begin(); (it != hash_table.end()) && ( count < 100) ; ++it, ++count){
 
                     cout << "\n -> Index #" << it->first << " :" << endl;
 
                     // Show up to 5 codes from each bucket for readability
                     int shown = 0;
-                    for( auto code = it->second.begin(); (code != it->second.end()) && (shown <= 5); ++code, ++shown){
+                    for( auto code = it->second.begin(); (code != it->second.end()) && (shown < 5); ++code, ++shown){
                         cout << *code << " ";
                     }
 
@@ -90,8 +90,8 @@ int main() {
                 cout << "\n *** SEARCH FOR A KEY *** " << endl;
                 cout << "\nEnter your key: ";
                 cin >> e_key;
-                while((e_key.size() < CODE_SIZE) || (e_key.size() > CODE_SIZE)){
-                    cout << "Ivalid key size, please enter your key again!" << endl;
+                while( e_key.size() != CODE_SIZE ){
+                    cout << "Invalid key size, please enter your key again!" << endl;
                     cout << "Enter your key: ";
                     cin >> e_key;
                 }
@@ -103,8 +103,8 @@ int main() {
                 cout << "\n *** ADD A KEY *** " << endl;
                 cout << "\nEnter your key: ";
                 cin >> a_key;
-                while((a_key.size() < CODE_SIZE) || (a_key.size() > CODE_SIZE)){
-                    cout << "Ivalid key size, please enter your key again!" << endl;
+                while( a_key.size() != CODE_SIZE ){
+                    cout << "Invalid key size, please enter your key again!" << endl;
                     cout << "Enter your key: ";
                     cin >> a_key;
                 }
@@ -116,8 +116,8 @@ int main() {
                 cout << "\n *** REMOVE A KEY *** " << endl;
                 cout << "\nEnter your key: ";
                 cin >> r_key;
-                while((r_key.size() < CODE_SIZE) || (r_key.size() > CODE_SIZE)){
-                    cout << "Ivalid key size, please enter your key again!" << endl;
+                while(r_key.size() != CODE_SIZE){
+                    cout << "Invalid key size, please enter your key again!" << endl;
                     cout << "Enter your key: ";
                     cin >> r_key;
                 }
@@ -129,8 +129,8 @@ int main() {
                 cout << "\n *** MODIFY A KEY *** " << endl;
                 cout << "\nEnter your key: ";
                 cin >> m_key;
-                while((m_key.size() < CODE_SIZE) || (m_key.size() > CODE_SIZE)){
-                    cout << "Ivalid key size, please enter your key again!" << endl;
+                while( m_key.size() != CODE_SIZE ){
+                    cout << "Invalid key size, please enter your key again!" << endl;
                     cout << "Enter your key: ";
                     cin >> m_key;
                 }
@@ -200,7 +200,7 @@ void search_key(const map<int, list<string>>& h_t, const string& code){
             cout << "+ Code " << code << " found at index " << index << endl;
         }
         else{
-            cout << "x Code " << code << " NOT found" << endl;
+            cout << "x Code " << code << "  NOT found in hash table" << endl;
         }
 
     }
@@ -251,7 +251,7 @@ void remove_key(map<int, list<string>>& h_t, const string& code){
             }
         }
         if(!found){
-            cout << "x Code " << code << " NOT found hash table" << endl;
+            cout << "x Code " << code << " NOT found in hash table" << endl;
         }
 
     }
@@ -271,19 +271,19 @@ void modify_key(map<int, list<string>>& h_t, const string& code){
         for( auto key = it->second.begin(); (key != it->second.end()) && (found == false); ++key){
             if(*key == code){
                 found = true;
-                cout << "Code: " << code << " was found at index " << index << endl;
+                cout << "Code " << code << " was found at index " << index << endl;
                 cout << "Enter the code you would like to replace the old code with: ";
                 cin >> new_code;
-                while((new_code.size() < CODE_SIZE) || (new_code.size() > CODE_SIZE)){
-                    cout << "Ivalid key size, please enter your key again!" << endl;
+                while((new_code.size() != CODE_SIZE)){
+                    cout << "Invalid key size, please enter your key again!" << endl;
                     cout << "Enter your key: ";
                     cin >> new_code;
                 }
-                cout << "Old code:" << code << endl;
+                cout << "Old code " << code << " removed from bucket under index " << index << endl;
                 it->second.erase(key);
                 int new_index = gen_hash_index(new_code);
                 h_t[new_index].push_back(new_code);
-                cout << "New code: " << new_code << " was added to the bucket under index " << new_index << endl;
+                cout << "New code " << new_code << " was added to the bucket under index " << new_index << endl;
             }
         }
         if(!found){
