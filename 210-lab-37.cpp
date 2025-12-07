@@ -150,6 +150,19 @@ void search_key(const map<int, list<string>>& h_t, const string& code){
     auto it = h_t.find(index);
 
     if(it != h_t.end()){
+        bool found = false;
+        for( auto key = it->second.begin(); (key != it->second.end()) && (found == false); ++key){
+            if(*key == code){
+                found = true;
+            }
+        }
+
+        if(found){
+            cout << "+ Code " << code << " found at index " << index << endl;
+        }
+        else{
+            cout << "x Code " << code << " NOT found in bucket " << index << endl;
+        }
 
     }
     else{
