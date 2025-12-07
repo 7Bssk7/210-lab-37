@@ -264,19 +264,24 @@ void remove_key(map<int, list<string>>& h_t, const string& code){
 void modify_key(map<int, list<string>>& h_t, const string& code){
     int index = gen_hash_index(code);
     auto it = h_t.find(index);
+    string new_code;
 
     if(it != h_t.end()){
         bool found = false;
         for( auto key = it->second.begin(); (key != it->second.end()) && (found == false); ++key){
             if(*key == code){
                 found = true;
+                cout << "Code: " << code << " was found at index " << index << endl;
+                cout << "Enter the code you would like to replace the old code with: ";
+                cin >> new_code;
+                while((new_code.size() < CODE_SIZE) || (new_code.size() > CODE_SIZE)){
+                    cout << "Ivalid key size, please enter your key again!" << endl;
+                    cout << "Enter your key: ";
+                    cin >> new_code;
+                }
             }
         }
-
-        if(found){
-            cout << "+ Code " << code << " found at index " << index << endl;
-        }
-        else{
+        if(!found){
             cout << "x Code " << code << " NOT found" << endl;
         }
 
