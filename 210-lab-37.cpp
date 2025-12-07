@@ -13,6 +13,7 @@ const int N = 141;
 
 // Function prototype of the function that generates a hash index for a given string
 int gen_hash_index(const string&);
+void meun();
 
 int main() {
     char a = 'A';
@@ -47,6 +48,14 @@ int main() {
         hash_table[index].push_back(input);
                                                                                                                                                       
     }
+
+    int choice;
+
+    menu();
+    cin >> choice;
+    
+    
+
 
     // Outputs the first 100 entries of the hash table
     int count = 0;
@@ -88,6 +97,16 @@ int gen_hash_index(const string & s){
 
     return sum % N;
 
+}
+
+void menu(){
+    cout << "1. Print 100 entries" << endl;
+    cout << "2. Search for a key" << endl;
+    cout << "3. Add a key" << endl;
+    cout << "4. Remove a key" << endl;
+    cout << "5. Modify a key" << endl;
+    cout << "6. Exit" << endl;
+    cout << "Enter your choice: ";
 }
 
 // *** TEST ***
