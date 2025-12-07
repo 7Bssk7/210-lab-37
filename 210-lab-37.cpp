@@ -279,6 +279,11 @@ void modify_key(map<int, list<string>>& h_t, const string& code){
                     cout << "Enter your key: ";
                     cin >> new_code;
                 }
+                cout << "Old code:" << code << endl;
+                it->second.erase(key);
+                int new_index = gen_hash_index(new_code);
+                h_t[new_index].push_back(new_code);
+                cout << "New code: " << new_code << " was added to the bucket under index " << new_index << endl;
             }
         }
         if(!found){
