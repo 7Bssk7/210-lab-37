@@ -34,7 +34,7 @@ int main() {
 
     // Check if file opened successfully
     if(!in_File){
-        cout << "Failed to open then file!" << endl;
+        cout << "Failed to open the file!" << endl;
         return 1;
     }
 
