@@ -84,8 +84,8 @@ int main() {
             }
             if(choice == 2){
                 string e_key;
-                cout << " *** SEARCH FOR A KEY *** " << endl;
-                cout << "\n Enter your key: ";
+                cout << "\n *** SEARCH FOR A KEY *** " << endl;
+                cout << "\nEnter your key: ";
                 cin >> e_key;
                 search_key(hash_table, e_key);
             }
@@ -146,7 +146,15 @@ void menu(){
 }
 
 void search_key(const map<int, list<string>>& h_t, const string& code){
-    cout << "TEST" << endl;
+    int index = gen_hash_index(code);
+    auto it = h_t.find(index);
+
+    if(it != h_t.end()){
+
+    }
+    else{
+        cout <<  "Index " << index << " not found in hash table." << endl;
+    }
 
 }
 
