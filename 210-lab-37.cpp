@@ -234,13 +234,12 @@ void remove_key(map<int, list<string>>& h_t, const string& code){
         for( auto key = it->second.begin(); (key != it->second.end()) && (found == false); ++key){
             if(*key == code){
                 found = true;
+                cout << "Code: " << code << " was found at index " << index << endl;
+                it->second.erase(key);
+                cout << "Code: " << code << " was removed from the hash table" << endl;
             }
         }
-
-        if(found){
-            cout << "Code: " << code << " was found at index " << index << endl;
-        }
-        else{
+        if(!found){
             cout << "x Code " << code << " NOT found in bucket " << index << endl;
         }
 
