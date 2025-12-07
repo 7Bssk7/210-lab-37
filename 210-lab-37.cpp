@@ -11,6 +11,13 @@ int main() {
     int b = 66;
     cout << b << endl;
     cout << (char) b << endl;
+
+    string test = "ABC"; 
+    int test_r;
+
+    test_r = sum_ascii(test);
+
+    cout << "Sum : " << test_r << endl;
     
 
     return 0;
@@ -18,7 +25,14 @@ int main() {
 
 
 int sum_ascii(const string & s){
-    
+    int sum = 0;
+
+    for(int i = 0; i < s.size(); ++i){
+        sum += s.at(i);
+    }
+
+    return sum;
+
 }
 /* 
 These targets are present in the dataset and can be used for testing:
