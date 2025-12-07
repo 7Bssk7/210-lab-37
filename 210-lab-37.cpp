@@ -145,14 +145,13 @@ int main() {
                 
             }
         }
+        // Output menu again after each operation
         menu();
         cin >> choice;
     }
 
+    // Milestone 6: Exit program
     cout << "Bye" << endl;
-
-
-
 
     // *** TEST ***
     /*
@@ -181,6 +180,9 @@ int gen_hash_index(const string & s){
 
 }
 
+// menu(): outputs the interactive menu options for the user
+// argument: none
+// return: none, outputs menu
 void menu(){
     cout << "\n1. Print 100 entries" << endl;
     cout << "2. Search for a key" << endl;
@@ -191,6 +193,9 @@ void menu(){
     cout << "Enter your choice: ";
 }
 
+// search_key(): searches for a given code in the hash table by computing its hash index and checking the bucket
+// argument: const map<int, list<string>>& h_t (hash table), string code (the code to search)
+// return: none, outputs whether the code was found and its index
 void search_key(const map<int, list<string>>& h_t, const string& code){
     int index = gen_hash_index(code);
     auto it = h_t.find(index);
@@ -217,6 +222,9 @@ void search_key(const map<int, list<string>>& h_t, const string& code){
 
 }
 
+// add_key(): adds a new code to the hash table if it does not already exist in the bucket
+// argument: map<int, list<string>>& h_t (hash table), string code (the code to add)
+// return: none, outputs confirmation or duplicate warning
 void add_key(map<int, list<string>>& h_t, const string& code){
     int index = gen_hash_index(code);
     auto it = h_t.find(index);
