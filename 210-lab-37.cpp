@@ -6,6 +6,8 @@
 #include <list>
 using namespace std;
 
+const int N = 141;
+
 int gen_hash_index(const string&);
 
 int main() {
@@ -19,18 +21,27 @@ int main() {
     // int grand_sum  = 0;
     string input;
     fstream in_File("lab-37-data-3.txt");
-    map<int, list<int>> hash_table;
+    map<int, list<string>> hash_table;
 
     if(!in_File){
         cout << "Failed to open then file!" << endl;
         return 1;
     }
 
-    /*
+
     while(getline(in_File, input)){
-        grand_sum += sum_ascii(input);
+
+        int index = gen_hash_index(input);
+
+        hash_table[index].push_back(input);
+
+
+        
+                                                                                                                                                      
+
     }
 
+    /*
     cout << "Grand total: " << grand_sum << endl;
 
     vector<string> test {"536B9DFC93AF", "1DA9D64D02A0", "666D109AA22E", "E1D2665B21EA"};
@@ -52,7 +63,7 @@ int gen_hash_index(const string & s){
         sum += s.at(i);
     }
 
-    return sum;
+    return sum % N;
 
 }
 /* 
