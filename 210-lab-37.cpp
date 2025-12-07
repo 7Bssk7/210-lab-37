@@ -42,6 +42,12 @@ int main() {
 
         cout << "Index #" << it->first << " :" << endl;
 
+        for(const auto code : it->second){
+            cout << code << " ";
+        }
+
+        cout << endl;
+
     }
 
     /*
