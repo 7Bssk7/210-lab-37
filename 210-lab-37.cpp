@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 int sum_ascii(const string&);
@@ -12,12 +13,11 @@ int main() {
     cout << b << endl;
     cout << (char) b << endl;
 
-    string test = "ABC"; 
-    int test_r;
+    vector<string> test {"536B9DFC93AF", "1DA9D64D02A0", "666D109AA22E", "E1D2665B21EA"};
+    for (int i = 0; i < test.size(); ++i){
+        cout << "Sum : " << sum_ascii(test.at(i)) << endl;
+    }
 
-    test_r = sum_ascii(test);
-
-    cout << "Sum : " << test_r << endl;
     
 
     return 0;
