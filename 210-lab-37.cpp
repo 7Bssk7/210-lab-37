@@ -11,7 +11,7 @@ using namespace std;
 // Constant for modulus used in hash function
 const int N = 141, CODE_SIZE = 12;
 
-// Function prototype of the function that generates a hash index for a given string
+// Function prototypes
 int gen_hash_index(const string&);
 void search_key(const map<int, list<string>>& , const string&);
 void add_key(map<int, list<string>>& , const string&);
@@ -60,15 +60,18 @@ int main() {
 
     cout << "\n *** WELCOME *** " << endl;
 
+    // Output menu and process user choices until exit
     menu();
     cin >> choice;
     while(choice != 6){
+        // Handle invalid menu input
         if((choice < 1) || (choice > 6)){
             cout << "\nInvalid input, please enter your choice again!" << endl;
             menu();
             cin >> choice;
         }
         else{
+            // Milestone 1: Print the first 100 entries of the hash table
             if(choice == 1){
                 // Outputs the first 100 entries of the hash table
                 int count = 0;
@@ -85,6 +88,7 @@ int main() {
                     cout << endl;
                 }
             }
+            // Milestone 2: Search for a code
             if(choice == 2){
                 string e_key;
                 cout << "\n *** SEARCH FOR A KEY *** " << endl;
@@ -98,6 +102,7 @@ int main() {
                 search_key(hash_table, e_key);
 
             }
+            // Milestone 3: Add a code
             if(choice == 3){
                 string a_key;
                 cout << "\n *** ADD A KEY *** " << endl;
@@ -111,6 +116,7 @@ int main() {
                 add_key(hash_table, a_key);
                 
             }
+            // Milestone 4: Remove a code
             if(choice == 4){
                 string r_key;
                 cout << "\n *** REMOVE A KEY *** " << endl;
@@ -124,6 +130,7 @@ int main() {
                 remove_key(hash_table, r_key);
                 
             }
+            // Milestone 5: Modify a code
             if(choice == 5){
                 string m_key;
                 cout << "\n *** MODIFY A KEY *** " << endl;
