@@ -1,3 +1,5 @@
+// COMSC-210 | Lab 37 | Arkhip Finski
+// IDE used: Visual Studio
 #include <iostream>
 #include <string>
 #include <vector>
@@ -46,20 +48,20 @@ int main() {
                                                                                                                                                       
     }
 
+    // Outputs the first 100 entries of the hash table
     int count = 0;
     for(map<int, list<string>>::iterator it = hash_table.begin(); (it != hash_table.end()) && ( count <= 100) ; ++it, ++count){
 
         cout << "\n -> Index #" << it->first << " :" << endl;
 
+        // Show up to 5 codes from each bucket for readability
         int shown = 0;
         for( auto code = it->second.begin(); (code != it->second.end()) && (shown <= 5); ++code, ++shown){
             cout << *code << " ";
         }
 
         cout << endl;
-
     }
-
 
     // *** TEST ***
     /*
@@ -71,12 +73,12 @@ int main() {
     }
     */    
 
-    
-
     return 0;
 }
 
-
+// gen_hash_index(): sums ASCII values of characters in the string, then reduces the sum modulo N(141) to get a hash index
+// argument: string(code) read from the input file
+// return: hash index for the hash_table
 int gen_hash_index(const string & s){
     int sum = 0;
 
@@ -87,6 +89,8 @@ int gen_hash_index(const string & s){
     return sum % N;
 
 }
+
+// *** TEST ***
 /* 
 These targets are present in the dataset and can be used for testing:
 536B9DFC93AF
