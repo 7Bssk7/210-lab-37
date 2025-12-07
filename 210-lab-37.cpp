@@ -13,6 +13,7 @@ const int N = 141;
 
 // Function prototype of the function that generates a hash index for a given string
 int gen_hash_index(const string&);
+void search_key(const map<int, list<string>>& , const string&);
 void menu();
 
 int main() {
@@ -82,7 +83,11 @@ int main() {
                 }
             }
             if(choice == 2){
-
+                string e_key;
+                cout << " *** SEARCH FOR A KEY *** " << endl;
+                cout << "\n Enter your key: ";
+                cin >> e_key;
+                search_key(hash_table, e_key);
             }
             if(choice == 3){
                 
@@ -138,6 +143,11 @@ void menu(){
     cout << "5. Modify a key" << endl;
     cout << "6. Exit" << endl;
     cout << "Enter your choice: ";
+}
+
+void search_key(const map<int, list<string>>& h_t, const string& code){
+    cout << "TEST" << endl;
+
 }
 
 // *** TEST ***
