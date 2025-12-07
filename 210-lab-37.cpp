@@ -23,20 +23,25 @@ int main() {
     // *** TEST ***
     // int grand_sum  = 0;
 
+    // String to hold each line read from the file
     string input;
+    // File with dataset containing 12-character codes
     fstream in_File("lab-37-data-3.txt");
+    // (Map)Hash table: key is int hash index, value is list of codes mapping to that index
     map<int, list<string>> hash_table;
 
+    // Check if file opened successfully
     if(!in_File){
         cout << "Failed to open then file!" << endl;
         return 1;
     }
 
-
+    // Read each code from the file, generates hash index, and insert into hash_table list
     while(getline(in_File, input)){
 
+        // Generates index
         int index = gen_hash_index(input);
-
+        // Insert into hash_table list
         hash_table[index].push_back(input);
                                                                                                                                                       
     }
