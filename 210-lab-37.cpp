@@ -1,6 +1,8 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
+int sum_ascii(const string&);
 
 int main() {
     char a = 'A';
@@ -14,6 +16,10 @@ int main() {
     return 0;
 }
 
+
+int sum_ascii(const string & s){
+    
+}
 /* 
 These targets are present in the dataset and can be used for testing:
 536B9DFC93AF
