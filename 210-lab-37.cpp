@@ -9,6 +9,7 @@
 using namespace std;
 
 // Constant for modulus used in hash function
+// CODE_SIZE - all codes are exactly 12 characters long
 const int N = 141, CODE_SIZE = 12;
 
 // Function prototypes
