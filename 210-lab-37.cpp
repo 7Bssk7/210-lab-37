@@ -34,10 +34,13 @@ int main() {
         int index = gen_hash_index(input);
 
         hash_table[index].push_back(input);
-
-
-        
                                                                                                                                                       
+    }
+
+    int count = 0;
+    for(map<int, list<string>>::iterator it = hash_table.begin(); (it != hash_table.end()) && ( count <= 100) ; ++it, ++count){
+
+        cout << "Index #" << it->first << " :" << endl;
 
     }
 
