@@ -1,4 +1,4 @@
-// COMSC-210 | Lab 37 | Arkhip Finski
+// COMSC-210 | Lab 38 | Arkhip Finski
 // IDE used: Visual Studio
 #include <iostream>
 #include <string>
@@ -15,6 +15,7 @@ const int N = 141, CODE_SIZE = 12;
 int gen_hash_index(const string&);
 void search_key(const map<int, list<string>>& , const string&);
 void add_key(map<int, list<string>>& , const string&);
+void remove_key(map<int, list<string>>& , const string&);
 void menu();
 
 int main() {
@@ -110,6 +111,16 @@ int main() {
                 
             }
             if(choice == 4){
+                string r_key;
+                cout << "\n *** REMOVE A KEY *** " << endl;
+                cout << "\nEnter your key: ";
+                cin >> r_key;
+                while((r_key.size() < CODE_SIZE) || (r_key.size() > CODE_SIZE)){
+                    cout << "Ivalid key size, please enter your key again!" << endl;
+                    cout << "Enter your key: ";
+                    cin >> r_key;
+                }
+                remove_key(hash_table, r_key);
                 
             }
             if(choice == 5){
@@ -212,6 +223,32 @@ void add_key(map<int, list<string>>& h_t, const string& code){
         h_t[index].push_back(code);
         cout << code << " was added to the bucket under index " << index << endl;
     }
+}
+
+void remove_key(map<int, list<string>>& h_t, const string& code){
+    int index = gen_hash_index(code);
+    auto it = h_t.find(index);
+
+    if(it != h_t.end()){
+        bool found = false;
+        for( auto key = it->second.begin(); (key != it->second.end()) && (found == false); ++key){
+            if(*key == code){
+                found = true;
+            }
+        }
+
+        if(found){
+            cout << "Code: " << code << " was found at index " << index << endl;
+        }
+        else{
+            cout << "x Code " << code << " NOT found in bucket " << index << endl;
+        }
+
+    }
+    else{
+        cout <<  "Index " << index << " not found in hash table." << endl;
+    }
+
 }
 
 // *** TEST ***
