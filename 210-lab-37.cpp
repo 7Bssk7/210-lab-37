@@ -16,6 +16,7 @@ int gen_hash_index(const string&);
 void search_key(const map<int, list<string>>& , const string&);
 void add_key(map<int, list<string>>& , const string&);
 void remove_key(map<int, list<string>>& , const string&);
+void modify_key(map<int, list<string>>& , const string&);
 void menu();
 
 int main() {
@@ -124,6 +125,16 @@ int main() {
                 
             }
             if(choice == 5){
+                string m_key;
+                cout << "\n *** MODIFY A KEY *** " << endl;
+                cout << "\nEnter your key: ";
+                cin >> m_key;
+                while((m_key.size() < CODE_SIZE) || (m_key.size() > CODE_SIZE)){
+                    cout << "Ivalid key size, please enter your key again!" << endl;
+                    cout << "Enter your key: ";
+                    cin >> m_key;
+                }
+                modify_key(hash_table, m_key);
                 
             }
         }
@@ -189,12 +200,12 @@ void search_key(const map<int, list<string>>& h_t, const string& code){
             cout << "+ Code " << code << " found at index " << index << endl;
         }
         else{
-            cout << "x Code " << code << " NOT found in bucket " << index << endl;
+            cout << "x Code " << code << " NOT found" << endl;
         }
 
     }
     else{
-        cout <<  "Index " << index << " not found in hash table." << endl;
+        cout <<  "Index " << index << " not found in hash table" << endl;
     }
 
 }
@@ -240,12 +251,38 @@ void remove_key(map<int, list<string>>& h_t, const string& code){
             }
         }
         if(!found){
-            cout << "x Code " << code << " NOT found in bucket " << index << endl;
+            cout << "x Code " << code << " NOT found hash table" << endl;
         }
 
     }
     else{
-        cout <<  "Index " << index << " not found in hash table." << endl;
+        cout <<  "Index " << index << " not found in hash table" << endl;
+    }
+
+}
+
+void modify_key(map<int, list<string>>& h_t, const string& code){
+    int index = gen_hash_index(code);
+    auto it = h_t.find(index);
+
+    if(it != h_t.end()){
+        bool found = false;
+        for( auto key = it->second.begin(); (key != it->second.end()) && (found == false); ++key){
+            if(*key == code){
+                found = true;
+            }
+        }
+
+        if(found){
+            cout << "+ Code " << code << " found at index " << index << endl;
+        }
+        else{
+            cout << "x Code " << code << " NOT found" << endl;
+        }
+
+    }
+    else{
+        cout <<  "Index " << index << " not found in hash table" << endl;
     }
 
 }
